@@ -1,50 +1,48 @@
 #  HW9
 
-def gritting():
+def gritting(_):
     print("How can I help you?")
 
-def add():
+def add(text=""):
+    print(text)
     print("adding")
 
-def change():
+def change(text=""):
     print("chsnging")
 
-def phone():
+def phone(text=""):
     print("phone read")
 
-def show():
+def show(text=""):
     print("showing")
 
-def exit():
-    print("good bye")
+def exit(_):
+    print("Good bye!")
 
 
 dic = {
     "hello":gritting,
-    "add":add(),
-    "change":change(),
-    "phone":phone(),
-    "exit":exit(),
+    "add":add,
+    "change":change,
+    "phone":phone,
+    "exit":exit,
     "close":exit,
     "good bye":exit,
 }
 
-
+# find command in text
 def find_command(text=""): 
     text = text.lower()
-    words = text.split()
-    for word in words:
-        # print(word)
-        if word in dic:
-            print("====",word)
-            return dic[word]
-        # else: 
-        #     return print("error command")
-    return 
+    for kee in dic.keys():
+        if kee in text:
+            print("====",kee)
+            p = (dic[kee])
+            return p(text)
+    return print("waiting")
 
 
 
-find_command( "sz rtfgyd helLO ssr")
+find_command( " first seKOnd hello mister")
 
 
 
