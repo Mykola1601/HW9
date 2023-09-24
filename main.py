@@ -17,6 +17,7 @@ def add(text=""):
     text = text[text.find("add"):]
     words = text.split()[1:3]
     phone_book[words[0].title()] = words[1]
+    print(words[0].title()+" saved with number "+ words[1])
 
 # change contact if exist
 def change(text=""):
@@ -24,6 +25,7 @@ def change(text=""):
     words = text.split()[1:3]
     if words[0].title() in phone_book.keys():
         phone_book[words[0].title()] = words[1]
+        print(words[0].title()+" change number to "+ words[1])
     else:
         print("no contact")
 
@@ -31,7 +33,10 @@ def change(text=""):
 def phone(text=""):
     text = text[text.find("phone"):]
     words = text.split()[1:3]
-    print(phone_book[words[0].title()] )
+    if words[0].title() in phone_book.keys():
+        print(words[0].title()+' -> '+phone_book[words[0].title()] )
+    else:
+        print(words[0].title(),' not exist in phone book')
 
 # show all
 def show(text=""):
