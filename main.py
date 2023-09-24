@@ -14,11 +14,13 @@ def greeting(_):
 
 # add contact
 def add(text=""):
+    text = text[text.find("add"):]
     words = text.split()[1:3]
     phone_book[words[0].title()] = words[1]
 
 # change contact if exist
 def change(text=""):
+    text = text[text.find("change"):]
     words = text.split()[1:3]
     if words[0].title() in phone_book.keys():
         phone_book[words[0].title()] = words[1]
@@ -27,6 +29,7 @@ def change(text=""):
 
 # search contact 
 def phone(text=""):
+    text = text[text.find("phone"):]
     words = text.split()[1:3]
     print(phone_book[words[0].title()] )
 
