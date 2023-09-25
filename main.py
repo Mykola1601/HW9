@@ -23,18 +23,22 @@ def greeting(_):
 
 # add contact
 def add(text=""):
-    text = text[text.find("add"):]
+    # text = text[text.find("add"):]
+    text = text.removeprefix("add ")
+    # print (text)
     phone = normalize_phone(text)
-    words = text.split()[1:]
-    name = words[0].title()
-    phone_book[name] = phone
-    print(name+" saved with number "+ phone)
+    if phone :
+        words = text.split()
+        name = words[0].title()
+        phone_book[name] = phone
+        print(name+" saved with number "+ phone)
 
 # change contact if exist
 def change(text=""):
-    text = text[text.find("change"):]
+    # text = text[text.find("change"):]
+    text = text.removeprefix("change ")
     phone = normalize_phone(text)
-    words = text.split()[1:]
+    words = text.split()
     name = words[0].title()
     if name in phone_book.keys():
         phone_book[name] = phone
@@ -44,13 +48,17 @@ def change(text=""):
 
 # search contact 
 def phone(text=""):
-    text = text[text.find("phone"):]
-    words = text.split()[1:]
+    # text = text[text.find("phone"):]
+    text = text.removeprefix("phone ")
+    words = text.split()
     name = words[0].title()
     if name in phone_book.keys():
         print(name+' -> '+phone_book[name] )
     else:
-        print(name,' not exist in phone book')
+        print(name,' not exist in phone book!!!')
+        name_input =  (input("Enter user name >>>"))
+        if not find_command(name_input):
+            phone(text=name_input)
 
 # show all
 def show(text=""):
@@ -64,11 +72,11 @@ def exit(_):
 # dict for commands
 dic = { 
     "hello":greeting,
-    "add":add,
-    "change":change,
-    "phone":phone,
+    "add ":add,
+    "change ":change,
+    "phone ":phone,
     "show all":show,
-    "show":show,
+    # "show":show,
     "exit":exit,
     "close":exit,
     "good bye":exit,
@@ -82,7 +90,8 @@ def find_command(text=""):
             # print("====",kee)
             func = dic[kee]
             return func(text)
-    return print("do not undestend")
+    print("do not undestend")
+    return None
 
 print("I'm BOT, hello!!!")
 

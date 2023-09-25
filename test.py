@@ -8,8 +8,14 @@ text = 'add Mike   + 3 8 067 123 45-67'
 # for match in iterator:  
 #     print(match.group())
 
-numbers = re.findall('\d+', text)
-phone = (''.join(numbers))  
-phone = "+38"+phone[-10:]
+# numbers = re.findall('\d+', text)
+# phone = (''.join(numbers))  
+# phone = "+38"+phone[-10:]
 
-print(phone)
+# print(phone)
+
+
+text = text[text.find("add"):]
+print (text)
+text = text.removeprefix("add ")
+print (text)
