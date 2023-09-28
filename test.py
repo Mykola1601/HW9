@@ -8,6 +8,18 @@ text = 'add Mike   + 3 8 067 123 45-67'
 # for match in iterator:  
 #     print(match.group())
 
+
+# day = "04"
+# month = "10"
+# year = "2022"
+
+# print(day, month, year)
+# print(day, month, year, sep=":")
+# print(day, month, year, sep=".")
+
+password = "ABCabc123"
+print(password.isalnum())
+
 # numbers = re.findall('\d+', text)
 # phone = (''.join(numbers))  
 # phone = "+38"+phone[-10:]
@@ -15,10 +27,19 @@ text = 'add Mike   + 3 8 067 123 45-67'
 # print(phone)
 
 
+# print (list(set('mikolaaaa')))
+# a = ["english", "french", "spanish", "german", "twi"]
+# for language in a:
+#     print(language, end = "=")
+
+
+
+
 # text = text[text.find("add"):]
 # print (text)
 # text = text.removeprefix("add ")
 # print (text)
+
 
 text = '+3-8 0 97 (333) 44 - 22'
 numbers = re.findall('\d+', text)
@@ -32,9 +53,12 @@ phone = (''.join(numbers))
 #     # print('Phone number ERROR')
 #     return None
 
+
 iterator = re.finditer(r"0[\d]{9}", phone)
 if ( iterator):
     for match in iterator:  
         print(match.group())
 
 
+
+ 
