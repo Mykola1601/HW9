@@ -4,8 +4,26 @@ import sys
 import re
 
 phone_book = {'Nik' :'+380935609516', 'Anna':'+380993331122'}   #some names
+ 
+  
+# =================================================
 
-#add decorator
+def normalize_phone(text=''):
+    numbers = re.findall('\d+', text)
+    phone = (''.join(numbers))
+    iterator = re.finditer(r"0[\d]{9}", phone)
+    if iterator:
+        for match in iterator:
+            phone = match.group()
+            return "+38"+phone
+    else:
+        return None
+
+# =================================================
+
+
+
+# add decorator
 def add(func):
     def inner(*args):
         try:
@@ -13,6 +31,7 @@ def add(func):
         except :
             return "Give me name and phone please !"
     return inner
+
 
 # change decor
 def change(func):
@@ -24,18 +43,7 @@ def change(func):
     return inner
 
 
-
-
-def normalize_phone(text = ''):
-    numbers = re.findall('\d+', text)
-    phone = (''.join(numbers))  
-    iterator = re.finditer(r"0[\d]{9}", phone)
-    if iterator:
-        for match in iterator:  
-            phone = match.group()
-            return "+38"+phone
-    else:
-        return None
+# =================================================
 
 
 # greetings
@@ -60,6 +68,7 @@ def add(text=""):
     else:
          return name+' allready exist in phone book'
 
+
 # change contact if exist
 @change
 def change(text=""):
@@ -76,6 +85,7 @@ def change(text=""):
         return name+" change number to "+ phone
     else:
         return (f"no {name} in phone book")
+
 
 # search contact 
 def phone(text=""):
@@ -115,14 +125,13 @@ dic = {
 }
 
 
-# find command in text
+# find command in text > return dict key
 def find_command(text=""): 
     text = text.lower()
     for kee in dic.keys():
         if kee in text:
             # func = dic[kee]
             return kee
-
     return None
 
 
