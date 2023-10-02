@@ -1,7 +1,7 @@
 from datetime import date, datetime
 import re
 
-text = 'add Mike   + 3 8 067 123 45-67'
+text = 'add Mike   +38 (067)12345-67'
 #     result = []
 # iterator = re.finditer(r"[add]+[www|/|:]+[.]{0,1}[\w]+\.[a-zA-Z]{2,7}", text)
 # iterator = re.finditer(r"add+ \w+ +[+3|\d][\d| |\-|\(|\)]+", text)
@@ -47,7 +47,6 @@ text = 'add Mike   + 3 8 067 123 45-67'
 # print ( (phone))
 
 
-
 # if   12 >= len(phone) >= 10:
 #     return "+380"+phone[-9:]
 # else:
@@ -78,19 +77,7 @@ text = 'add Mike   + 3 8 067 123 45-67'
 # print( add_id([1,2,3],[7,8,9]))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+)
 
 
 

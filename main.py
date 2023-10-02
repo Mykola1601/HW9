@@ -3,10 +3,26 @@
 import sys
 import re
 
-phone_book = {
-    'Nik' :'+380935609516',
-    'Anna':'+380993331122',
-}
+phone_book = {'Nik' :'+380935609516', 'Anna':'+380993331122'}   #some names
+
+#add decorator
+def add(func):
+    def inner(*args):
+        try:
+            return func(*args)
+        except :
+            return "Give me name and phone please !"
+    return inner
+
+# change decor
+def change(func):
+    def inner(*args):
+        try:
+            return func(*args)
+        except :
+            return "Give me name and phone please !!!"
+    return inner
+
 
 
 
@@ -28,12 +44,13 @@ def greeting(_):
 
 
 # add contact
+@add
 def add(text=""):
-    text = text.removeprefix("add ")
-    name = text.split()[0].title()
-    text = text.removeprefix(name)
+    text = text.removeprefix("add ")  #remove command
+    name = text.split()[0].title()    #get Name
+    text = text.removeprefix(name)    #remove Name
     if not len(text) >9:
-        return 'Enter valid name & phone'
+        return 'Enter valid  phone'
     phone = normalize_phone(text)
     if not phone:
         return 'Enter valid phone'
@@ -44,6 +61,7 @@ def add(text=""):
          return name+' allready exist in phone book'
 
 # change contact if exist
+@change
 def change(text=""):
     text = text.removeprefix("change ")
     name = text.split()[0].title()
