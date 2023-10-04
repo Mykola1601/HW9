@@ -23,22 +23,13 @@ def normalize_phone(text=''):
 
 
 
-# add decorator
-def add(func):
+
+# decor
+def errors(func):
     def inner(*args):
         try:
             return func(*args)
-        except :
-            return "Give me name and phone please !"
-    return inner
-
-
-# change decor
-def change(func):
-    def inner(*args):
-        try:
-            return func(*args)
-        except :
+        except :                  #any errors
             return "Give me name and phone please !!!"
     return inner
 
@@ -52,7 +43,7 @@ def greeting(_):
 
 
 # add contact
-@add
+@errors
 def add(text=""):
     text = text.removeprefix("add ")  #remove command
     name = text.split()[0].title()    #get Name
@@ -70,7 +61,7 @@ def add(text=""):
 
 
 # change contact if exist
-@change
+@errors
 def change(text=""):
     text = text.removeprefix("change ")
     name = text.split()[0].title()

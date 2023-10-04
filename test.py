@@ -1,7 +1,7 @@
 from datetime import date, datetime
 import re
 
-text = 'add Mike   +38 (067)12345-67'
+text = 'add Mike +38 (067)1-234567      1nik16_01@gmsd.com   qwd.wwwdrg@gmsd.com'
 #     result = []
 # iterator = re.finditer(r"[add]+[www|/|:]+[.]{0,1}[\w]+\.[a-zA-Z]{2,7}", text)
 # iterator = re.finditer(r"add+ \w+ +[+3|\d][\d| |\-|\(|\)]+", text)
@@ -21,10 +21,12 @@ text = 'add Mike   +38 (067)12345-67'
 # password = "ABCabc123"
 # print(password.isalnum())
 
-# numbers = re.findall('\d+', text)
+# numbers = re.findall(r'\d+', text)
+numbers = re.findall(r"[A-Za-z]+[\w.-]+@[\w]+.+[\w]{2,4}", text)
 # phone = (''.join(numbers))
 # phone = "+38"+phone[-10:]
 
+print(numbers)
 # print(phone)
 
 
@@ -75,9 +77,3 @@ text = 'add Mike   +38 (067)12345-67'
 
 
 # print( add_id([1,2,3],[7,8,9]))
-
-
-
-
-
-
